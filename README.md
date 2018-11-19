@@ -28,3 +28,9 @@
 * printf();
 <br>
 [^1]:gotoxy함수 내에있는 SetConsolCursorPosition 함수는 헤더파일 WinCon.h에 포함되어 있으나 Windows.h가 WinCon.h를 포함하므로 생략한다.
+This is a text with a footnote1.
+
+This is a text with a
+footnote[^2].
+
+[^2]: And here is the definition.
