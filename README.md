@@ -20,7 +20,7 @@
 정 n각형의 둘레를 계산하기 위해서는 cos sin tan와 제곱의 계산이 필요하다.
 * #include<Windows.h>
 
-원주율 코드 자체에는 필요 없으나 gotoxy(39,3);[^1] System(cls); sleep(3000);등의 시각적 직관성을 위해 사용되었다.
+원주율 코드 자체에는 필요 없으나 gotoxy[^1](39,3); System(cls); sleep(3000);등의 시각적 직관성을 위해 사용되었다.
 ### 2.2 gotoxy
 함수 원형 void gotoxy(int a, int b)
 ### 2.3 main
