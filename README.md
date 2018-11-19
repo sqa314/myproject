@@ -29,7 +29,6 @@
 }
 </code></pre>
 * COORD
-
 pos배열을 포함하는 구조체 함수이다.
   * pos
   
