@@ -26,7 +26,7 @@
 정 n각형의 둘레를 계산하기 위해서는 cos sin tan와 제곱의 계산이 필요하다.
 * #include<Windows.h>
 
-원주율 코드 자체에는 필요 없으나 gotoxy[^1](39,3); System(cls); sleep(3000);등의 시각적 직관성을 위해 사용되었다.
+원주율 코드 자체에는 필요 없으나 gotoxy[1](39,3); System(cls); sleep(3000);등의 시각적 직관성을 위해 사용되었다.
 ### 2.2 gotoxy _ 커서이동
 <pre><code>void gotoxy(int x, int y)
 {
@@ -47,9 +47,10 @@ GetStdHandle(STD_OUTPUT_HANDLE)이라는 함수와 Pos배열을 입력으로 가
 ### 2.3 main
 * printf
 정수, 고정소수점, 문자열 등을 출력할 수 있는, 가장 기본적인 출력함수로
-<br>
-와 같이 사용할 수 있으며 결과로는
-> 96# 3.1408 < π < 3.1429
+> printf(" %9d# %.4f < π < %.4f\n", 6 * cun, znuq * sum / 2, skrri);
+
+위와 같이 쓸 수 있으며
+>        96# 3.1408 < π < 3.1429
 
 가 출력된다.[3]
 * scanf
