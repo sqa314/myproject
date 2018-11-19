@@ -28,11 +28,8 @@
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 </code></pre>
-* COORD
-pos배열을 포함하는 구조체 함수이다.
-  * pos
-  
-  2개의 정수로 이루어진 배열로 gotoxy의 정수 입력 x(가로)와 y(세로)[2]가 저장된다.
+* COORD<br>pos배열을 포함하는 구조체 함수이다.<br>
+  * pos<br>2개의 정수로 이루어진 배열로 gotoxy의 정수 입력 x(가로)와 y(세로)[2]가 저장된다.
 * SetConsoleCursorPosition
 함수 원형은 
 함수 원형 void gotoxy(int a, int b)
