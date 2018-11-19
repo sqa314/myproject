@@ -47,7 +47,7 @@ GetStdHandle(STD_OUTPUT_HANDLE)이라는 함수와 Pos배열을 입력으로 가
 ### 2.3 main
 * printf
 정수, 고정소수점, 문자열 등을 출력할 수 있는, 가장 기본적인 출력함수로
-> printf(" %9d# %.4f < π < %.4f\n", 6 * cun, znuq * sum / 2, skrri);
+>  printf(" %9d# %.4f < π < %.4f\n", 6 * cun, znuq * sum / 2, skrri);
 
 위와 같이 쓸 수 있으며
 >        96# 3.1408 < π < 3.1429
