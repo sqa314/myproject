@@ -28,15 +28,24 @@
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 </code></pre>
-* COORD<br>pos배열을 포함하는 구조체 함수이다.<br>
-  * pos<br>2개의 정수로 이루어진 배열로 gotoxy의 정수 입력 x(가로)와 y(세로)[2]가 저장된다.
+* COORD 
+
+pos배열을 포함하는 구조체 함수이다.
+* Pos
+
+2개의 정수로 이루어진 배열로 gotoxy의 정수 입력 x(가로)와 y(세로)[2]가 저장된다.
 * SetConsoleCursorPosition
-함수 원형은 
-함수 원형 void gotoxy(int a, int b)
+
+GetStdHandle(STD_OUTPUT_HANDLE)이라는 함수와 Pos배열을 입력으로 가지는 함수로<br>
+커서의 위치를 조절하는 HANDLE을 불러내어 Pos의 위치에 가져다 놓는(반환하는) 방식으로 화면에서의 커서 좌표를 설정한다.
 ### 2.3 main
 사실 이 코드는 main 한 블럭으로 별도의 함수정의나 객체화 없이 구성되어 있으므로<br>위 줄에서부터 아래 줄로 내려오는 C언어의 특성을 그대로 따라오면 쉽게 이해할 수 있다.
 * printf();
-가장 기본적인 출려방식으로 
+정수, 고정소수점, 문자열 등을 출력할 수 있는, 가장 기본적인 출력함수로
+<code><pre>printf(" %9d#  %.16f <π< %.16f\n", 6 * cun, znuq*sum / 2, skrri);</code></pre>와 같이 사용할 수 있으며 결과로는
+> 96# 3.1408 < π < 3.1429
+
+가 출력된다.
 <br>
-[1]:gotoxy함수 내에있는 SetConsoleCursorPosition 함수는 헤더파일 WinCon.h의 함수지만 Windows.h가 WinCon.h를 포함하므로 설명은 생략 합니다.
-[2]:임의의 문자도 상관 없습니다.
+[1]:gotoxy함수 내에있는 SetConsoleCursorPosition 함수는 헤더파일 WinCon.h의 함수지만 Windows.h가 WinCon.h를 포함하므로 설명은 생략한다.
+[2]:임의의 문자도 상관 없다.
