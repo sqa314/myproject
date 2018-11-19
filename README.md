@@ -67,17 +67,17 @@ GetStdHandle(STD_OUTPUT_HANDLE)이라는 함수와 Pos배열을 입력으로 가
 <br>
 이후 입력된 값이 num의 주소값으로 보내져 변수 num의 값으로 적용된다.
 * cos, sin, tan
-> cos(a);
+>     cos(a);
 
 입력값에 코사인, 사인, 탄젠트 값을 구한다. 위의 경우 cos(a)의 값을 반환한다.
 <br>
 주의해야할 점은 60분법이 아닌 **호도법을 사용**하므로 각도를 라디안(rad) 단위로 입력해야한다.
 * hypot
-> hypot(a);
+>     hypot(a);
 
 입력값의 제곱근을 구한다. 위의 경우 √a의 값을 반환한다.
 * pow
-> pow(b, a);
+>     pow(b, a);
 
 입력값의 n제곱을 구한다 위의 경우 a^b의 값을 반환한다.
 * Sleep
@@ -131,7 +131,7 @@ goto 함수는 코드 위 줄에서부터 아래 줄로 차례대로 실행되�
 * return
 
 return은 함수의 결과값을 반환하는 함수로 본 코드에서는 main함수의 코드를 끝내는
-> return 0;
+>     return 0;
 
 로만 사용되었다.
 <br>
