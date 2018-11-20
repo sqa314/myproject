@@ -97,10 +97,10 @@ else
 </code></pre>if는 경우에 따라 코드의 진행이 달라지는 분기점에 사용하는 함수로 따라오는 괄호 안의 내용이<br>참일 경우 코드의 진행을 이어가고, 거짓일 경우 바로 뒤의 코드를 생략하고 넘어간다.<br>괄호 안의 내용은 &&를 통해 and 연결, ||를 통해 or 연결 가능하며<br>함수가 끝날 때 else를 사용하면 내용이 거짓일때만 실행되는 코드를 작성할 수 있다.
 
 * for
-<code><pre>for(i = 0; i < 10; i++)
+<pre><code>void gotoxy(int x, int y)
 {
-	printf("%d");
-	Sleep(1000);
+	COORD Pos = { x - 1, y - 1 };	
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 </code></pre>
 for는 반복문으로 따라오는 괄호안의 내용은
@@ -142,6 +142,11 @@ return은 함수의 결과값을 반환하는 함수로 본 코드에서는 main
 	int sum = 6;
 	int num;
 </code></pre>
+C언어 특성상 변수의 선언이 코드에서 가장 우선되어야 한다.
+<br>
+다른 함수 아래에 변수의 선언이 이루어질 경우 오류가 난다.
+<br>
+이때 코드는 일반적으로 { }로 묶인 단위 내부을 이야기한다. 
 ### 3.2 입력부
 입력부는 사용자에게 무엇을 요구하는지 설명하기위한 printf,
 <br>
