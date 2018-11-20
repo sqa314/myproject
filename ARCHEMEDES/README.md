@@ -159,7 +159,30 @@ scanf("%d", &num);</code></pre>
 <br>
 각각 함수에 대한 설명은 2에서 나온 내용과 같다.
 ### 3.2 연산부
-	
+<pre><code>if (num <= 26 && num >= 1) {
+	for (i = 0; i<num;)
+	{
+		int cun = pow((double)2, i);
+		double cune = 1 / (double)cun;
+		double zhei = cune * (PI / 3);
+		double scr = sin(zhei);
+		double csr = 1 - cos(zhei);
+		double znuq = hypot(scr, csr);
+		double skr = tan(zhei);
+		double skrri = skr * 3 * cun;
+		printf(" %9d#  %.16f <π< %.16f\n", 6 * cun, znuq*sum / 2, skrri);
+		i = i + 1;
+		sum = sum * 2;
+		Sleep(1);
+	}
+}
+else
+{
+	printf("입력한 수가 잘 못 되었거나 너무 큽니다.                                   \n오차가 커져 값을 정밀하게 표현할 수 없습니다.\n다시 입력해 주세요");
+	Sleep(3000);
+	goto here;
+}</code></pre>
+
 [^1] :gotoxy함수 내에있는 SetConsoleCursorPosition 함수는 헤더파일 WinCon.h의 함수지만 Windows.h가 WinCon.h를 포함하므로 설명은 생략한다.
 <br>
 [2] :임의의 문자도 상관 없다.
