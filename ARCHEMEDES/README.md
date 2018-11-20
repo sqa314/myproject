@@ -160,8 +160,7 @@ scanf("%d", &num);</code></pre>
 각각 함수에 대한 설명은 2에서 나온 내용과 같다.
 ### 3.2 연산부
 <pre><code>if (num <= 26 && num >= 1) {
-	for (i = 0; i<num;)
-	{
+	for (i = 0; i<num;) {
 		int cun = pow((double)2, i);
 		double cune = 1 / (double)cun;
 		double zhei = cune * (PI / 3);
