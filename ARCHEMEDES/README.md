@@ -1,180 +1,141 @@
-Skip to content
+아르키메데스의 원주율
+=
 
+## 1. 배경지식
+### 1.1 아르키메데스
+아르키메데스는
+<br>
+임의의 원의 둘레는 정 다각형이 그 원에 내접할 때의 길이보다 길고, 외접할 때의 길이보다 작음을 이용하여
+<br>
+무리수 π 의 값을 알 수 있다고 생각했다.
+<br>
+아르키메데스는 실로 정 구십육각형을 이용하여 원주율을 3.1408 < π < 3.1429까지 계산하였다.
+### 1.2 코드
+본 코드는 작성자가 처음으로 개발한 소프트웨어로 C언어에 입문할 당시의 본인을 기준으로
+<br>
+초심자가 보고 따라 만들 수 있을 수준의 기초적인 내용을 상세히 설명한다.
 
-  
-Pull requests 
-Issues 
-Marketplace 
-Explore 
- 
+## 2 C언어를 이용한 원주율
+### 2.1 #include
+* #include<stdio.h>
 
+정 n각형의 n값을 입력받기 위한 scanf_s
+계산값을 출력하기 위한 printf를 포함한 여러 입출력 함수들이 포함되어 있다.
+* #include<math.h>
 
-Sign out 
+정 n각형의 둘레를 계산하기 위해서는 cos sin tan와 제곱의 계산이 필요하다.
+* #include<Windows.h>
 
-
- Watch 
-0 
- Star 
-0 
- Fork 
-0 
-
-sqa314/myproject 
- Code 
- Issues 0 
- Pull requests 0 
- Projects 0 
- Wiki 
- Insights 
- Settings 
-Branch: master 
-Find file 
-Copy path 
-myproject/Archimedes 
-8e52725 7 days ago 
- sqa314 Create Archimedes 
-1 contributor 
- 
-Raw
-Blame
-History
-   
-62 lines (59 sloc) 1.73 KB 
-
-include<stdio.h>
-
-#include<math.h>
-
-#include<Windows.h>
-
-void gotoxy(int x, int y)
-
+원주율 코드 자체에는 필요 없으나 gotoxy[1](39,3); system(cls); Sleep(3000);등의 시각적 직관성을 위해 사용되었다.
+### 2.2 gotoxy _ 커서이동
+<pre><code>void gotoxy(int x, int y)
 {
-
 	COORD Pos = { x - 1, y - 1 };
-
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
-
 }
+</code></pre>
+* COORD 
 
-int main()
+pos배열을 포함하는 구조체 함수이다.
+* Pos
 
-{
+2개의 정수로 이루어진 배열로 gotoxy의 정수 입력 x(가로)와 y(세로)[2]가 저장된다.
+* SetConsoleCursorPosition
 
-	printf("\n\n           아르키메데스의 원주율");
+GetStdHandle(STD_OUTPUT_HANDLE)이라는 함수와 Pos배열을 입력으로 가지는 함수로<br>
+커서의 위치를 조절하는 HANDLE을 불러내어 Pos의 위치에 가져다 놓는(반환하는) 방식으로 화면에서의 커서 좌표를 설정한다.
+### 2.3 함수
+* int, double, char
 
-	printf("\n\n      -아르키메데스는 기원전 2세기경 한 원의 둘레는 원 안에 내접하는\n      정 n각형의 둘레와 외접하는 정 n각형의 둘레사이에 있을 것이라 생각했고\n      원안에 96각형을 작도함으로써 원주율을 3.14까지 계산 해냈다.");
-
-	printf("\n\n\n\n      제작자 : 사각사과");
-
-	Sleep(3000);
-
-here:
-
-	char c;
-
-	char yn;
-
+각각 정수, 고정소수점, 문자를 담을 수 있는 변수를 선언한다.
+<code><pre>int i;
 	double PI = 3.1415926535897932384;
+	char yn;</code></pre>위와 같이 사용된다.
+* printf
+>     printf(" %9d# %.4f < π < %.4f\n", 6 * cun, znuq * sum / 2, skrri);
 
-	int i;
+정수, 고정소수점, 문자열 등을 출력할 수 있는, 가장 기본적인 출력함수로 위의 경우
+> 96# 3.1408 < π < 3.1429
 
-	int sum = 6;
+가 출력된다.[3]
+* scanf
+>     scanf("%d", &num);
 
-	int num;
+정수, 고정소수점, 문자열 등을 입력할 수 있는, 가장 기본적인 입력함수로 위의 경우
+<br>
+이후 입력된 값이 num의 주소값으로 보내져 변수 num의 값으로 적용된다.
+* cos, sin, tan
+>     cos(a);
 
-	system("cls");
+입력값에 코사인, 사인, 탄젠트 값을 구한다. 위의 경우 cos(a)의 값을 반환한다.
+<br>
+주의해야할 점은 60분법이 아닌 **호도법을 사용**하므로 각도를 라디안(rad) 단위로 입력해야한다.
+* hypot
+>     hypot(a);
 
-	printf("\n\n몇각형으로 실험하시겠습니까?    [3*(2^  )]각형\n최대 201326592각형 = 오차 < 0.00000000000001");
+입력값의 제곱근을 구한다. 위의 경우 √a의 값을 반환한다.
+* pow
+>     pow(b, a);
 
-	gotoxy(39, 3);
+입력값의 n제곱을 구한다 위의 경우 a^b의 값을 반환한다.
+* Sleep
+>     sleep(3000);
 
-	scanf("%d", &num);
+코드 진행을 일정 시간 지연하는 기능으로 입력값의 1/1000초를 정지한다. 위의 경우 3초간 지연된다.
+* system
 
-	if (num <= 26 && num >= 1) {
+system함수는 입력값에 따라 다양한 기능을 수행하지만 본 코드에서는
+>     system("cls");
 
-		for (i = 0; i<num;)
+만을 사용하며 이 경우 콘솔의 모든 내용을 지운다.
+* if
 
-		{
-
-			int cun = pow((double)2, i);
-
-			double cune = 1 / (double)cun;
-
-			double zhei = cune * (PI / 3);
-
-			double scr = sin(zhei);
-
-			double csr = 1 - cos(zhei);
-
-			double znuq = hypot(scr, csr);
-
-			double skr = tan(zhei);
-
-			double skrri = skr * 3 * cun;
-
-			printf(" %9d#  %.16f <π< %.16f\n", 6 * cun, znuq*sum / 2, skrri);
-
-			i = i + 1;
-
-			sum = sum * 2;
-
-			Sleep(1);
-
-		}
-
-	}
-
-	else
-
-	{
-
-		printf("입력한 수가 잘 못 되었거나 너무 큽니다.                                   \n오차가 커져 값을 정밀하게 표현할 수 없습니다.\n다시 입력해 주세요");
-
-		Sleep(3000);
-
-		goto here;
-
-	}
-
-
-
-dace:
-
-
-
-	printf("\n다시하시겠습니까 ( Y/N ) ?     [");
-
-	getchar();
-
-	scanf("%c", &yn);
-
-	if (yn == 'N' || yn == 'n')
-
+<code><pre>if (yn == 'N' || yn == 'n')
 		goto end;
+	else
+		goto here;</code></pre>if는 경우에 따라 코드의 진행이 달라지는 분기점에 사용하는 함수로 따라오는 괄호 안의 내용이<br>참일 경우 코드의 진행을 이어가고, 거짓일 경우 바로 뒤의 코드를 생략하고 넘어간다.<br>괄호 안의 내용은 &&를 통해 and 연결, ||를 통해 or 연결 가능하며<br>함수가 끝날 때 else를 사용하면 내용이 거짓일때만 실행되는 코드를 작성할 수 있다.
 
-	else if (yn == 'Y' || yn == 'y')
+* for
 
-		goto here;
+<code><pre>for(i = 0; i < 10; i++)
+{
+	printf("%d");
+	Sleep(1000);
+}</code></pre>
+for는 반복문으로 따라오는 괄호안의 내용은
+> for(초기 조건; 반복 조건; 1회 반복당 실행)
+	
+으로 이루어 지며 위의 함수를 예시로 들면
+1. i = 0을 설정하며 반복을 시작
+2. i < 10 인지 확인
+3. i < 10이 참이라면 printf, Sleep을 차례로 실행한 후 i++(i값을 1 올림), 과정 2로 되돌아감
+4. i < 10이 거짓이라면 뒤의 코드 생략
+5. for함수 끝
 
-end:
+위의 과정을 5번이 나올 때까지 반복한다. 
+* goto
 
-	return 0;
+goto 함수는 코드 위 줄에서부터 아래 줄로 차례대로 실행되는 프로그램의 실행 순서를 강제로 변경하는 함수로
+<br>
+**코드의 직관성을 해치고, 프로그램의 오류를 유발하므로 사용하지 않는 것을 권장한다.**
+<br>
+사용 방법은
+>     goto a;
 
-}
+와 같이 임의의 변수를 goto로 선언하고 프로그램의 임의의 위치에
+>     a:
 
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
- 
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+를 놓으면 실행순서가 즉시 a:의 위치로 이동한다.
+* return
 
-Press h to open a hovercard with more details. 
+return은 함수의 결과값을 반환하는 함수로 본 코드에서는 main함수의 코드를 끝내는
+>     return 0;
+
+로만 사용되었다.
+<br>
+
+[^1] :gotoxy함수 내에있는 SetConsoleCursorPosition 함수는 헤더파일 WinCon.h의 함수지만 Windows.h가 WinCon.h를 포함하므로 설명은 생략한다.
+<br>
+[2] :임의의 문자도 상관 없다.
+<br>
+[3]: 설명을 위해 변수에 들어갈 값은 임의로 조정하였다.
