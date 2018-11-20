@@ -3,6 +3,7 @@
 
 ## 1. 배경지식
 ### 1.1 아르키메데스
+![example](./example.png)
 아르키메데스는
 <br>
 임의의 원의 둘레는 정 다각형이 그 원에 내접할 때의 길이보다 길고, 외접할 때의 길이보다 작음을 이용하여
@@ -209,7 +210,10 @@ return 0;</code></pre>
 * 고정소수점을 double로 설정하였기 때문에 **8Byte 이진법으로 계산 가능한 소숫값까지 신뢰**할 수 있다.
 * 모든 각도 계산은 **호도법**으로 이루어져 있다.
 ### 결과
-[^1] :gotoxy함수 내에있는 SetConsoleCursorPosition 함수는 헤더파일 WinCon.h의 함수지만 Windows.h가 WinCon.h를 포함하므로 설명은 생략한다.
+![start](./start.png)
+![result](./result.png)
+<br>
+[1] :gotoxy함수 내에있는 SetConsoleCursorPosition 함수는 헤더파일 WinCon.h의 함수지만 Windows.h가 WinCon.h를 포함하므로 설명은 생략한다.
 <br>
 [2] :임의의 문자도 상관 없다.
 <br>
