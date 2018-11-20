@@ -159,8 +159,8 @@ C언어 특성상 변수의 선언이 코드에서 가장 우선되어야 한다
 <br>
 각각 함수에 대한 설명은 2에서 나온 내용과 같다.
 ### 3.2 연산부
-<pre><code>if (num 〈= 26 && num 〉= 1) {
-	for (i = 0; i 〈 num;) {
+<pre><code>if (num <= 26 && num >= 1) {
+	for (i = 0; i < num;) {
 		int cun = pow((double)2, i);
 		double cune = 1 / (double)cun;
 		double zhei = cune * (PI / 3);
@@ -169,7 +169,7 @@ C언어 특성상 변수의 선언이 코드에서 가장 우선되어야 한다
 		double znuq = hypot(scr, csr);
 		double skr = tan(zhei);
 		double skrri = skr * 3 * cun;
-		printf(" %9d#  %.16f 〈 π 〈 %.16f\n", 6 * cun, znuq*sum / 2, skrri);
+		printf(" %9d#  %.16f < π < %.16f\n", 6 * cun, znuq*sum / 2, skrri);
 		i = i + 1;
 		sum = sum * 2;
 		Sleep(1);
