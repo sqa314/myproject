@@ -15,7 +15,7 @@
 <br>
 초심자가 보고 따라 만들 수 있을 수준의 기초적인 내용을 상세히 설명한다.
 
-## 2 C언어를 이용한 원주율
+## 2 코드 기초
 ### 2.1 #include
 * #include<stdio.h>
 
@@ -23,7 +23,7 @@
 계산값을 출력하기 위한 printf를 포함한 여러 입출력 함수들이 포함되어 있다.
 * #include<math.h>
 
-정 n각형의 둘레를 계산하기 위해서는 cos sin tan와 제곱의 계산이 필요하다.
+정 n각형의 둘레를 계산하기 위해서는 cos sin tan와 지수의 계산이 필요하다.
 * #include<Windows.h>
 
 원주율 코드 자체에는 필요 없으나 gotoxy[1](39,3); system(cls); Sleep(3000);등의 시각적 직관성을 위해 사용되었다.
@@ -77,7 +77,7 @@ GetStdHandle(STD_OUTPUT_HANDLE)이라는 함수와 Pos배열을 입력으로 가
 * pow
 >     pow(b, a);
 
-입력값의 n제곱을 구한다 위의 경우 a^b의 값을 반환한다.
+입력값의 지수 함수값을 구한다 위의 경우 a^b의 값을 반환한다.
 * Sleep
 >     sleep(3000);
 
@@ -132,8 +132,24 @@ return은 함수의 결과값을 반환하는 함수로 본 코드에서는 main
 >     return 0;
 
 로만 사용되었다.
+## 3 구조
+### 3.2 선언부
+<	char c;
+
+	char yn;
+
+	double PI = 3.1415926535897932384;
+
+	int i;
+
+	int sum = 6;
+
+	int num;</code></pre>
+### 3.2 입력부
+입력부는 사용자에게 무엇을 요구하는지 설명하기위한 printf,
 <br>
-### 2.4 구조
+사용자가 입력한 값을 받아들일 scanf_s함수로 이루어져 있다.
+<br>
 
 [^1] :gotoxy함수 내에있는 SetConsoleCursorPosition 함수는 헤더파일 WinCon.h의 함수지만 Windows.h가 WinCon.h를 포함하므로 설명은 생략한다.
 <br>
