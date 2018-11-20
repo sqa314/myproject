@@ -30,7 +30,7 @@
 ### 2.2 gotoxy _ 커서이동
 <pre><code>void gotoxy(int x, int y)
 {
-	COORD Pos = { x - 1, y - 1 };
+	COORD Pos = { x - 1, y - 1 };	
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 </code></pre>
@@ -90,19 +90,17 @@ system함수는 입력값에 따라 다양한 기능을 수행하지만 본 코�
 
 만을 사용하며 이 경우 콘솔의 모든 내용을 지운다.
 * if
-
 <code><pre>if (yn == 'N' || yn == 'n')
-		goto end;
-	else
-		goto here;
+	goto end;
+else
+	goto here;
 </code></pre>if는 경우에 따라 코드의 진행이 달라지는 분기점에 사용하는 함수로 따라오는 괄호 안의 내용이<br>참일 경우 코드의 진행을 이어가고, 거짓일 경우 바로 뒤의 코드를 생략하고 넘어간다.<br>괄호 안의 내용은 &&를 통해 and 연결, ||를 통해 or 연결 가능하며<br>함수가 끝날 때 else를 사용하면 내용이 거짓일때만 실행되는 코드를 작성할 수 있다.
 
 * for
-
 <code><pre>for(i = 0; i < 10; i++)
 {
-		printf("%d");
-		Sleep(1000);
+	printf("%d");
+	Sleep(1000);
 }
 </code></pre>
 for는 반복문으로 따라오는 괄호안의 내용은
