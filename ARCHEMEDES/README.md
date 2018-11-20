@@ -90,17 +90,17 @@ system함수는 입력값에 따라 다양한 기능을 수행하지만 본 코�
 
 만을 사용하며 이 경우 콘솔의 모든 내용을 지운다.
 * if
-<code><pre>if (yn == 'N' || yn == 'n')
+<pre><code>if (yn == 'N' || yn == 'n')
 	goto end;
 else
 	goto here;
 </code></pre>if는 경우에 따라 코드의 진행이 달라지는 분기점에 사용하는 함수로 따라오는 괄호 안의 내용이<br>참일 경우 코드의 진행을 이어가고, 거짓일 경우 바로 뒤의 코드를 생략하고 넘어간다.<br>괄호 안의 내용은 &&를 통해 and 연결, ||를 통해 or 연결 가능하며<br>함수가 끝날 때 else를 사용하면 내용이 거짓일때만 실행되는 코드를 작성할 수 있다.
 
 * for
-<pre><code>void gotoxy(int x, int y)
+<pre><code>for(i = 0; i < 10; i ++)
 {
-	COORD Pos = { x - 1, y - 1 };	
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
+	printf("%d",i);
+	Sleep(1000);
 }
 </code></pre>
 for는 반복문으로 따라오는 괄호안의 내용은
@@ -135,7 +135,7 @@ return은 함수의 결과값을 반환하는 함수로 본 코드에서는 main
 로만 사용되었다.
 ## 3 구조
 ### 3.1 선언부
-<code><pre>char c;
+<pre><code>char c;
 	char yn;
 	double PI = 3.1415926535897932384;
 	int i;
@@ -148,6 +148,9 @@ C언어 특성상 변수의 선언이 코드에서 가장 우선되어야 한다
 <br>
 이때 코드는 일반적으로 { }로 묶인 단위 내부을 이야기한다. 
 ### 3.2 입력부
+<pre><code>printf("\n\n몇각형으로 실험하시겠습니까?    [3*(2^  )]각형\n최대 201326592각형 = 오차 < 0.00000000000001");
+	gotoxy(39, 3);
+	scanf("%d", &num);</code></pre>
 입력부는 사용자에게 무엇을 요구하는지 설명하기위한 printf,
 <br>
 사용자가 입력한 값을 받아들일 scanf_s함수로 이루어져 있다.
