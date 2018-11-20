@@ -133,6 +133,7 @@ return은 함수의 결과값을 반환하는 함수로 본 코드에서는 main
 
 로만 사용되었다.
 <br>
+### 2.4 구조
 
 [^1] :gotoxy함수 내에있는 SetConsoleCursorPosition 함수는 헤더파일 WinCon.h의 함수지만 Windows.h가 WinCon.h를 포함하므로 설명은 생략한다.
 <br>
