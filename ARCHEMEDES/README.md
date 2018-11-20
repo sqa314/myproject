@@ -134,7 +134,7 @@ return은 함수의 결과값을 반환하는 함수로 본 코드에서는 main
 로만 사용되었다.
 ## 3 구조
 ### 3.1 선언부
-<code><pre>	char c;
+<code><pre> char c;
 
 	char yn;
 
