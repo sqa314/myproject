@@ -21,10 +21,10 @@
 
 정 n각형의 n값을 입력받기 위한 scanf_s
 계산값을 출력하기 위한 printf를 포함한 여러 입출력 함수들이 포함되어 있다.
-* #include<math.h>
+* **#include<math.h>**
 
 정 n각형의 둘레를 계산하기 위해서는 cos sin tan와 지수의 계산이 필요하다.
-* #include<Windows.h>
+* **#include<Windows.h>**
 
 원주율 코드 자체에는 필요 없으나 gotoxy[1](39,3); system(cls); Sleep(3000);등의 시각적 직관성을 위해 사용되었다.
 ### 2.2 gotoxy _ 커서이동
@@ -34,69 +34,69 @@
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
 }
 </code></pre>
-* COORD 
+* **COORD** 
 
 pos배열을 포함하는 구조체 함수이다.
-* Pos
+* **Pos**
 
 2개의 정수로 이루어진 배열로 gotoxy의 정수 입력 x(가로)와 y(세로)[2]가 저장된다.
-* SetConsoleCursorPosition
+* **SetConsoleCursorPosition**
 
 GetStdHandle(STD_OUTPUT_HANDLE)이라는 함수와 Pos배열을 입력으로 가지는 함수로<br>
 커서의 위치를 조절하는 HANDLE을 불러내어 Pos의 위치에 가져다 놓는(반환하는) 방식으로 화면에서의 커서 좌표를 설정한다.
 ### 2.3 함수
-* int, double, char
+* **int, double, char**
 
 각각 정수, 고정소수점, 문자를 담을 수 있는 변수를 선언한다.
 <code><pre>int i;
 	double PI = 3.1415926535897932384;
 	char yn;
 </code></pre>위와 같이 사용된다.
-* printf
+* **printf**
 >     printf(" %9d# %.4f < π < %.4f\n", 6 * cun, znuq * sum / 2, skrri);
 
 정수, 고정소수점, 문자열 등을 출력할 수 있는, 가장 기본적인 출력함수로 위의 경우
 > 96# 3.1408 < π < 3.1429
 
 가 출력된다.[3]
-* scanf
+* **scanf**
 >     scanf("%d", &num);
 
 정수, 고정소수점, 문자열 등을 입력할 수 있는, 가장 기본적인 입력함수로 위의 경우
 <br>
 이후 입력된 값이 num의 주소값으로 보내져 변수 num의 값으로 적용된다.
-* cos, sin, tan
+* **cos, sin, tan**
 >     cos(a);
 
 입력값에 코사인, 사인, 탄젠트 값을 구한다. 위의 경우 cos(a)의 값을 반환한다.
 <br>
 주의해야할 점은 60분법이 아닌 **호도법을 사용**하므로 각도를 라디안(rad) 단위로 입력해야한다.
-* hypot
+* **hypot**
 >     hypot(a);
 
 입력값의 제곱근을 구한다. 위의 경우 √a의 값을 반환한다.
-* pow
+* **pow**
 >     pow(b, a);
 
 입력값의 지수 함수값을 구한다 위의 경우 a^b의 값을 반환한다.
-* Sleep
+* **Sleep**
 >     sleep(3000);
 
 코드 진행을 일정 시간 지연하는 기능으로 입력값의 1/1000초를 정지한다. 위의 경우 3초간 지연된다.
-* system
+* **system**
 
 system함수는 입력값에 따라 다양한 기능을 수행하지만 본 코드에서는
 >     system("cls");
 
 만을 사용하며 이 경우 콘솔의 모든 내용을 지운다.
-* if
+* **if**
 <pre><code>if (yn == 'N' || yn == 'n')
 	goto end;
 else
 	goto here;
 </code></pre>if는 경우에 따라 코드의 진행이 달라지는 분기점에 사용하는 함수로 따라오는 괄호 안의 내용이<br>참일 경우 코드의 진행을 이어가고, 거짓일 경우 바로 뒤의 코드를 생략하고 넘어간다.<br>괄호 안의 내용은 &&를 통해 and 연결, ||를 통해 or 연결 가능하며<br>함수가 끝날 때 else를 사용하면 내용이 거짓일때만 실행되는 코드를 작성할 수 있다.
 
-* for
+* **for**
 <pre><code>for(i = 0; i < 10; i ++)
 {
 	printf("%d",i);
@@ -114,7 +114,7 @@ for는 반복문으로 따라오는 괄호안의 내용은
 5. for함수 끝
 
 위의 과정을 5번이 나올 때까지 반복한다. 
-* goto
+* **goto**
 
 goto 함수는 코드 위 줄에서부터 아래 줄로 차례대로 실행되는 프로그램의 실행 순서를 강제로 변경하는 함수로
 <br>
@@ -127,7 +127,7 @@ goto 함수는 코드 위 줄에서부터 아래 줄로 차례대로 실행되�
 >     a:
 
 를 놓으면 실행순서가 즉시 a:의 위치로 이동한다.
-* return
+* **return**
 
 return은 함수의 결과값을 반환하는 함수로 본 코드에서는 main함수의 코드를 끝내는
 >     return 0;
@@ -136,11 +136,11 @@ return은 함수의 결과값을 반환하는 함수로 본 코드에서는 main
 ## 3 구조
 ### 3.1 선언부
 <pre><code>char c;
-	char yn;
-	double PI = 3.1415926535897932384;
-	int i;
-	int sum = 6;
-	int num;
+char yn;
+double PI = 3.1415926535897932384;
+int i;
+int sum = 6;
+int num;
 </code></pre>
 C언어 특성상 변수의 선언이 코드에서 가장 우선되어야 한다.
 <br>
@@ -149,8 +149,8 @@ C언어 특성상 변수의 선언이 코드에서 가장 우선되어야 한다
 이때 코드는 일반적으로 { }로 묶인 단위 내부을 이야기한다. 
 ### 3.2 입력부
 <pre><code>printf("\n\n몇각형으로 실험하시겠습니까?    [3*(2^  )]각형\n최대 201326592각형 = 오차 < 0.00000000000001");
-	gotoxy(39, 3);
-	scanf("%d", &num);</code></pre>
+gotoxy(39, 3);
+scanf("%d", &num);</code></pre>
 입력부는 사용자에게 무엇을 요구하는지 설명하기위한 printf,
 <br>
 사용자가 입력한 값을 받아들일 scanf_s함수로 이루어져 있다.
