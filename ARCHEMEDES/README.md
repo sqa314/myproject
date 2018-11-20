@@ -134,16 +134,11 @@ return은 함수의 결과값을 반환하는 함수로 본 코드에서는 main
 로만 사용되었다.
 ## 3 구조
 ### 3.1 선언부
-<code><pre> char c;
-
+<code><pre>char c;
 	char yn;
-
 	double PI = 3.1415926535897932384;
-
 	int i;
-
 	int sum = 6;
-
 	int num;</code></pre>
 ### 3.2 입력부
 입력부는 사용자에게 무엇을 요구하는지 설명하기위한 printf,
