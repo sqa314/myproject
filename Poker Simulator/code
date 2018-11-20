@@ -1,0 +1,240 @@
+import java.util.*;
+class Rank {
+	int i,j;
+	int count = 0;
+	public void cls() {
+		count = 0;
+	}
+	public boolean RSP(int[][] a) {
+		for(i = 0;i < a.length-1; i++) {
+			if (a[i][0] == a[i+1][0] + 1 && a[i][1] == a[i+1][1])
+				count++;
+			else if (a[i][0] == a[i+1][0])
+				;
+			else
+				cls();
+			if (count == 4 && a[i][0] == 10) {
+				cls();
+				return true;
+			}
+		}
+		cls();
+		return false;
+	}
+	public boolean StF(int[][] a) {
+		for(i = 0;i < a.length-1; i++) {
+			if (a[i][0] == a[i+1][0] + 1 && a[i][1] == a[i+1][1])
+				count++;
+			else if (a[i][0] == a[i+1][0])
+				;
+			else
+				cls();
+			if (count == 4) {
+				cls();
+				return true;
+			}
+		}
+		cls();
+		return false;
+	}
+	public boolean Fcd(int[][] a) {
+		for(i = 0;i < a.length-1; i++) {
+			if (a[i][0] == a[i+1][0])
+				count++;
+			else
+				cls();
+			if (count == 3) {
+				cls();
+				return true;
+			}
+		}
+		cls();
+		return false;
+	}
+	public boolean FuH(int[][] a) {
+		for(i = 0;i < a.length-1; i++) {
+			if (a[i][0] == a[i+1][0])
+				count++;
+			if (count == 3) {
+				cls();
+				return true;
+			}
+		}
+		cls();
+		return false;
+	}
+	public boolean Fsh(int[][] a) {
+		for(i = 0;i < a.length-1; i++) {
+			if (a[i][2] == a[i+1][2])
+				count++;
+			else
+				cls();
+			if (count == 4) {
+				cls();
+				return true;
+			}
+		}
+		cls();
+		return false;
+	}
+	public boolean Str(int[][] a) {
+		for(i = 0;i < a.length-1; i++) {
+			if (a[i][0] == a[i+1][0] + 1)
+				count++;
+			else if (a[i][0] == a[i+1][0])
+				;
+			else
+				cls();
+			if (count == 4) {
+				cls();
+				return true;
+			}
+		}
+		cls();
+		return false;
+	}
+	public boolean Trp(int[][] a) {
+		for(i = 0;i < a.length-1; i++) {
+			if (a[i][0] == a[i+1][0])
+				count++;
+			else
+				cls();
+			if (count == 2) {
+				cls();
+				return true;
+			}
+		}
+		cls();
+		return false;
+	}
+	public boolean TwP(int[][] a) {
+		for(i = 0;i < a.length-1; i++) {
+			if (a[i][0] == a[i+1][0])
+				count++;
+			if (count == 2) {
+				cls();
+				return true;
+			}
+		}
+		cls();
+		return false;
+	}
+	public boolean OnP(int[][] a) {
+		for(i = 0;i < a.length-1; i++) {
+			if (a[i][0] == a[i+1][0])
+				return true;				
+		}
+		return false;
+	}
+}
+class Play {
+	int i, j;
+	boolean check;
+	int newCard;
+	Random rand = new Random();
+	public int[][] shuffle(int n){
+		int[][] card = new int[n][3];
+		for(i = 0; i < n; i++) {
+			for(check = false;check == false;) {
+				newCard = rand.nextInt(52);
+				card[i][0]= newCard;
+				if(i==0)
+					check = true;
+				for(j = 0;j < i && card[i][0]!= card[j][0];j++) {
+					if (j == i-1) 
+						check = true;
+				}
+			}
+			card[i][1] = newCard % 13;
+			switch(newCard / 13) {
+			case 0:
+				card[i][2] = 1;
+				break;
+			case 1:
+				card[i][2] = 2;
+				break;
+			case 2:
+				card[i][2] = 3;
+				break;
+			case 3:
+				card[i][2] = 4;
+				break;
+			}
+		}
+		return card;
+	}
+	public int[][] array(int[][] card) {
+		int i,j,k;
+		int temp1, temp2, temp3;
+		int[][] arr = new int[card.length][3];
+		for(i = 0; i < card.length; i++) {
+			arr[i][0] = card[i][1];
+			arr[i][1] = card[i][2];
+			arr[i][2] = card[i][2];
+		}
+		for(j=0 ; j < card.length-1; j++)
+		{
+			for(k=j+1 ; k < card.length; k++)
+			{
+				if(arr[j][0] <= arr[k][0])
+				{
+					temp1 = arr[j][0];
+					temp2 = arr[j][1];
+					arr[j][0] = arr[k][0];
+					arr[j][1] = arr[k][1];
+					arr[k][0] = temp1;
+					arr[k][1] = temp2;
+				}
+				if(arr[j][2] <= arr[k][2]) {
+					temp3 = arr[j][2];
+					arr[j][2] = arr[k][2];
+					arr[k][2] = temp3;
+				}
+			}
+		}
+		return arr;
+	}
+	public int rank(int[][] arr) {
+		Rank a = new Rank();
+		if (a.RSP(arr) == true) 
+			return 10;
+		else if (a.StF(arr) == true)
+			return 9;
+		else if (a.Fcd(arr) == true)
+			return 8;
+		else if (a.FuH(arr) == true)
+			return 7;
+		else if (a.Fsh(arr) == true)
+			return 6;
+		else if (a.Str(arr) == true)
+			return 5;
+		else if (a.Trp(arr) == true)
+			return 4;
+		else if (a.TwP(arr) == true)
+			return 3;
+		else if (a.OnP(arr) == true)
+			return 2;
+		else
+			return 1;
+	}
+}
+public class poker {
+	public static void main(String[] args) {
+		int n;
+		int i;
+		int num;
+		int result;
+		int[][] card;
+		Scanner scan = new Scanner(System.in);
+		Play game = new Play();
+		System.out.println("카드 장 수를 설정해주십시오 [5,6,7]");
+		n = scan.nextInt();
+		System.out.println("몇 번 실험하시겠습니까");
+		num = scan.nextInt();
+		for(i = 0; i < num; i++) {
+			card = game.shuffle(n);
+			result = game.rank(game.array(card));
+			System.out.println(result);
+		}
+	}
+}
