@@ -149,12 +149,94 @@ arr[i][2]는 무늬 정렬에 사용된다
 return arr;</code></pre>
 C언어에서도 흔히 볼 수 있는 배열 방식이다. 자세히 보면 숫자와 숫자+무늬는 큰 수부터,
 <br>
-무늬는 무니별로 정렬하고 있다.
+무늬는 무늬별로 정렬하고 있다.
 #### 2.2.3 rank
 |입력|출력|
 |-|-|
 |int[][] arr|int result|
+<pre><code>Rank a = new Rank();
+if (a.RSP(arr) == true) 
+	return 10;
+else if (a.StF(arr) == true)
+	return 9;
+else if (a.Fcd(arr) == true)
+	return 8;
+else if (a.FuH(arr) == true)
+	return 7;
+else if (a.Fsh(arr) == true)
+	return 6;
+else if (a.Str(arr) == true)
+	return 5;
+else if (a.Trp(arr) == true)
+	return 4;
+else if (a.TwP(arr) == true)
+	return 3;
+else if (a.OnP(arr) == true)
+	return 2;
+else
+	return 1;</code></pre>
+이제 판단하기 쉽도록 잘 정렬된 배열을 Rank class에 보내주고
+<br>
+Rank class에서 처리가 끝난 결과를 받을 준비가 되었다.
 ### 2.3 Rank
-####
+
+Rank class는 우리가 보는 숫자의 조합, 무늬의 조합을
+<br>
+수학적으로, 프로그래밍 적으로 어떻게 처리하는가를 다룬다.
+<pre><code>int i,j,k,l = 0;
+int count = 0;
+int count1 = 0;
+int count2 = 0;
+public void cls() {
+	count = 0;
+}</code></pre>
+아래 나오는 모든 판단은 위 코드를 기본가정한다.
+* **RSF**
+
+<pre><code>public boolean RSP(int[][] a) {
+	int s[] = new int[5];
+	int p[] = {2,3,5,7};
+	j = 0;
+	for(i = 0;i < a.length-1; i++) {
+		if (s[0] == 0)
+			s[0] = a[i][1];
+		if (a[i][0] == a[i+1][0] + 1) {
+			s[j+1]=a[i+1][1];
+			j++;
+			count++;
+		}
+		else if (a[i][0] == a[i+1][0])
+			s[j] = s[j] * a[i+1][1];
+		else {
+			cls();
+			s[0] = 0;
+			j = 0;
+		}
+		if(count == 4){
+			for(k = 0;k < p.length; k++){
+				for(l = 0; l < s.length; l++){
+					if (s[l] % p[k] == 0 ){
+						count1++;
+					}
+				}
+				if(count1 == 5 && a[i][0] == 9){	
+					count1 = 0;
+					cls();
+					return true;
+				}
+				count1 = 0;
+			}
+			for(l = 0; l < s.length-1; l++){
+				s[l] = s[l+1];
+			}
+			s[4] = 0;
+			j--;
+			count--;
+		}
+	}	
+	cls();
+	count1 = 0;
+	return false;
+}</code></pre>
 <br>
 [1] : 국가, 지역마다 규칙이 다르다.
