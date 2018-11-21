@@ -190,10 +190,14 @@ int count2 = 0;
 public void cls() {
 	count = 0;
 }</code></pre>
-아래 나오는 모든 판단은 위 코드를 기본가정한다.
-* **RSF**
+아래 나오는 모든 판단은 위 코드를 기본가정하고,
+<br>
+오름차순 정렬된 n장의 패가 각 조건을 만족하는가 여부를 판단한다.
+<br>
+실제 코드에서도 후술 순서대로 진행하며, 위쪽에서 판별된 조합은 아래쪽에서는 자동으로 제외된다.
+* **로얄 스트레이트 플러쉬**
 
-<pre><code>public boolean RSP(int[][] a) {
+<pre><code>public boolean RSF(int[][] a) {
 	int s[] = new int[5];
 	int p[] = {2,3,5,7};
 	j = 0;
@@ -238,5 +242,180 @@ public void cls() {
 	count1 = 0;
 	return false;
 }</code></pre>
+1. 숫자가 연속되는 5개의 패가 있는지 확인
+2. 5개의 숫자가 무늬별로 있을 수 있기 때문에 별도의 배열에 무늬에 해당하는 소수를 곱함
+3. 숫자별 무늬 배열이 하나의 소수로 모두 나누어 떨어진다면 하나의 무늬로된 5개의 연속된 수 존재
+4. 5개의 연속된 수가 A K Q J 10이어야 하기 때문에 마지막 순서가 10임을 확인 (코드에서는 9)
+* **스트레이트 플러쉬**
+<pre><code>public boolean StF(int[][] a) {
+	int s[] = new int[5];
+	int p[] = {2,3,5,7};
+	j = 0;
+	for(i = 0;i < a.length-1; i++) {
+		if (s[0] == 0)
+			s[0] = a[i][1];
+		if (a[i][0] == a[i+1][0] + 1) {
+			s[j+1]=a[i+1][1];
+			j++;
+			count++;
+		}
+		else if (a[i][0] == a[i+1][0])
+			s[j] = s[j] * a[i+1][1];
+		else {
+			cls();
+			s[0] = 0;
+			j = 0;
+		}
+		if(count == 4){
+			for(k = 0;k < p.length; k++){
+				for(l = 0; l < s.length; l++){
+					if (s[l] % p[k] == 0 ){
+						count1++;
+					}
+				}
+				if(count1 == 5){
+					count1 = 0;
+					cls();
+					return true;
+				}
+				count1 = 0;
+			}
+			for(l = 0; l < s.length-1; l++){
+				s[l] = s[l+1];
+			}
+			s[4] = 0;
+			j--;
+			count--;
+		}
+	}	
+	cls();
+	count1 = 0;
+	return false;
+}</code></pre>
+1. 로얄 스트레이트 플러쉬의 1~4까지의 조건과 같다.
+* **포카드**
+<pre><code>public boolean Fcd(int[][] a) {
+	for(i = 0; i < a.length-1; i++) {
+		if (a[i][0] == a[i+1][0])
+			count++;
+		else
+			cls();
+		if (count == 3) {
+			cls();
+			return true;
+		}
+	}
+	cls();
+	return false;
+}</code></pre>
+1. 배열의 다음수가 같은 수인지 확인
+2. 있다면 count++ 없다면 count = 0
+3. count가 3이면, 즉 같은수가 4번 연속 나온다면 포카드
+* **풀 하우스**
+<pre><code>public boolean FuH(int[][] a) {
+	int count1 = 0;
+	int count2 = 0;
+	for(i = 0;i < a.length-1; i++) {
+		if (a[i][0] == a[i+1][0]) {
+			count++;
+			count2++;
+		}
+		else
+			cls();
+		if (count == 2)
+			count1 = 1;
+		if (count2 == 3 && count1 == 1) {
+			count2 = 0;
+			count1 = 0;
+			cls();
+			return true;
+		}
+	}
+	cls();
+	count2 = 0;
+	count1 = 0;
+	return false;
+}</code></pre>
+1. 배열의 다음 수가 같은 수인지 확인
+2. 있다면 count++, count2++ 없다면 count = 0
+3. count2가 2 이상이면, 즉 같은 수가 3번 연속 나온다면 count1 = 1;
+4. count1가 1이고 count2가 3이면 풀 하우스
+* **플러쉬**
+<pre><code>public boolean Fsh(int[][] a) {
+	for(i = 0;i < a.length-1; i++) {
+		if (a[i][2] == a[i+1][2])
+			count++;
+		else
+			cls();
+		if (count == 4) {
+			cls();
+			return true;
+		}
+	}
+	cls();
+	return false;
+}</code></pre>
+1. 무늬에 따라 순서대로 정렬된 배열에 포카드와 같은 방법으로 5개의 같은 수가 있는지 확인
+* **스트레이트**
+<pre><code>public boolean Str(int[][] a) {
+	for(i = 0;i < a.length-1; i++) {
+		if (a[i][0] == a[i+1][0] + 1)
+			count++;
+		else if (a[i][0] == a[i+1][0])
+			;
+		else
+			cls();
+		if (count == 4) {
+			cls();
+			return true;
+		}
+	}
+	cls();
+	return false;
+}</code></pre>
+1. 배열의 다음수가 연속된 수인지 혹은 같은 수인지 확인
+2. 연속된 수라면 count++, 같은 수라면 유지, 둘 다 아니라면 count = 0;
+3. count가 4라면, 즉 연속된 수가 5개 있다면 스트레이트
+* **트리플**
+<pre><code>public boolean Trp(int[][] a) {
+	for(i = 0;i < a.length-1; i++) {
+		if (a[i][0] == a[i+1][0])
+			count++;
+		else
+			cls();
+		if (count == 2) {
+			cls();
+			return true;
+		}
+	}
+	cls();
+	return false;
+}</code></pre>
+1. 포카드의 절차와 동일하며 다만 4개의 같은 수가 아닌 3개의 같은 수를 찾는다.
+* ** 투 페어**
+<pre><code>public boolean TwP(int[][] a) {
+	for(i = 0;i < a.length-1; i++) {
+		if (a[i][0] == a[i+1][0])
+			count++;
+		if (count == 2) {
+			cls();
+			return true;
+		}
+	}
+	cls();
+	return false;
+}</code></pre>
+1. 배열의 다음수가 같은 수인지 확인
+2. 있다면 count++
+3. count가 2 이상이면 투 페어
+* **원 페어**
+<pre><code>public boolean OnP(int[][] a) {
+	for(i = 0;i < a.length-1; i++) {
+		if (a[i][0] == a[i+1][0])
+			return true;				
+	}
+	return false;
+}</code></pre>
+1. 포카드의 절차와 동일하며 다만 4개의 같은 수가 아닌 2개의 같은 수를 찾는다.
 <br>
 [1] : 국가, 지역마다 규칙이 다르다.
