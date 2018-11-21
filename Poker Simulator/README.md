@@ -107,5 +107,54 @@ switch(newCard / 13) {
 }</code></pre>
 랜덤을 통해서 얻은 서로 다른 카드들을 우리가 아는 A ~ K, ◇♣♡♠에 해당하는 숫자로 배열에 할당한다. 
 #### 2.2.2 array
+
+이제 배열된 카드들을 족보에 만족하는지를 판단하기 쉽도록 배열해야 한다.
+
+|입력|출력|
+|-|-|
+|int[][] card|int[][] arr|
+<pre><code>int[][] arr = new int[card.length][3];
+for(i = 0; i < card.length; i++) {
+	arr[i][0] = card[i][1];
+	arr[i][1] = card[i][2];
+	arr[i][2] = card[i][2];
+}</code></pre>
+포커조합은 숫자, 무늬, 숫자+무늬의 조합으로 이루어지기 때문에 각각에 필요한 다양한 배열방식을 준비한다.
+<br>
+위 코드에서 arr[i][0]는 숫자 정렬
+<br>
+arr[i][1]은 숫자+무늬 정렬
+<br>
+arr[i][2]는 무늬 정렬에 사용된다
+<pre><code>for(j=0 ; j < card.length-1; j++)
+{
+	for(k=j+1 ; k < card.length; k++)
+	{
+		if(arr[j][0] <= arr[k][0])
+		{
+			temp1 = arr[j][0];
+			temp2 = arr[j][1];
+			arr[j][0] = arr[k][0];
+			arr[j][1] = arr[k][1];
+			arr[k][0] = temp1;
+			arr[k][1] = temp2;
+		}
+		if(arr[j][2] <= arr[k][2]) {
+			temp3 = arr[j][2];
+			arr[j][2] = arr[k][2];
+			arr[k][2] = temp3;
+		}
+	}
+}
+return arr;</code></pre>
+C언어에서도 흔히 볼 수 있는 배열 방식이다. 자세히 보면 숫자와 숫자+무늬는 큰 수부터,
+<br>
+무늬는 무니별로 정렬하고 있다.
+#### 2.2.3 rank
+|입력|출력|
+|-|-|
+|int[][] arr|int result|
+### 2.3 Rank
+####
 <br>
 [1] : 국가, 지역마다 규칙이 다르다.
