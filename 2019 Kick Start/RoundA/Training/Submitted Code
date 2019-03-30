@@ -1,0 +1,64 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdbool.h>
+#include<stdlib.h>
+#include<math.h>
+
+void CodeJam(int R, int P)
+{
+	int i, j;
+	int temp;
+	int answer = -1;
+	int* array = (int*)malloc(sizeof(int)*R);
+	int* gap = (int*)malloc(sizeof(int)*R);
+	for (i = 0; i < R; i++)
+	{
+		scanf("%d", &array[i]);
+		gap[i] = 0;
+	}
+	if (P == 0 || R < P)
+	{
+		printf("0\n");
+		return;
+	}
+	for (i = 0; i < R - 1; i++) {
+		for (j = 0; j < R - i - 1; j++) {
+			if (array[j] > array[j + 1]) {
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		}
+	}
+	for (i = 0; i < R - P + 1; i++)
+	{
+		for (j = i; j < i + P; j++)
+		{
+			gap[i] += array[i + P - 1] - array[j];
+		}
+	}
+	for (i = 0; i < R - P + 1; i++)
+	{
+		if (answer > gap[i] || answer < 0)
+		{
+			answer = gap[i];
+		}
+	}
+	printf("%d\n", answer);
+}
+int main()
+{
+	int i;
+	int t;
+	int R, P;
+	scanf("%d", &t);
+	for (i = 1; i <= t; ++i)
+	{
+		scanf("%d", &R);
+		scanf("%d", &P);
+		printf("Case #%d: ", i);
+		CodeJam(R, P);
+	}
+	return 0;
+}
