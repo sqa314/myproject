@@ -3,6 +3,7 @@ Problem
 As the football coach at your local school, you have been tasked with picking a team of exactly P students to represent your school. There are N students for you to pick from. The i-th student has a skill rating Si, which is a positive integer indicating how skilled they are. 
 
 You have decided that a team is fair if it has exactly P students on it and they all have the same skill rating. That way, everyone plays as a team. Initially, it might not be possible to pick a fair team, so you will give some of the students one-on-one coaching. It takes one hour of coaching to increase the skill rating of any student by 1. 
+
 The competition season is starting very soon (in fact, the first match has already started!), so you'd like to find the minimum number of hours of coaching you need to give before you are able to pick a fair team. 
 
 Input
@@ -12,35 +13,32 @@ The first line of the input gives the number of test cases, T. T test cases foll
 Output
 
 For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the minimum number of hours of coaching needed, before you can pick a fair team of P students. 
+
 Limits
+
 Time limit: 15 seconds per test set.
 Memory limit: 1 GB.
-1 ¡Â T ¡Â 100.
-1 ¡Â Si ¡Â 10000, for all i.
-2 ¡Â P ¡Â N.
+
+1 ≤ T ≤ 100.
+1 ≤ Si ≤ 10000, for all i.
+2 ≤ P ≤ N.
 Test set 1 (Visible)
-2 ¡Â N ¡Â 1000. 
+2 ≤ N ≤ 1000. 
 Test set 2 (Hidden)
-2 ¡Â N ¡Â 105. 
+2 ≤ N ≤ 105. 
+
 Sample
 
-Input 
-  
-
-Output 
+Input         Output 
   
 3
 4 3
-3 1 9 100
-6 2
-5 5 1 2 3 4
+3 1 9 100     Case #1: 14
+6 2           Case #2: 0
+5 5 1 2 3 4   Case #3: 6
 5 5
 7 7 1 7 7
 
-  
-Case #1: 14
-Case #2: 0
-Case #3: 6
 
   
 In Sample Case #1, you can spend a total of 6 hours training the first student and 8 hours training the second one. This gives the first, second and third students a skill level of 9. This is the minimum time you can spend, so the answer is 14. 
