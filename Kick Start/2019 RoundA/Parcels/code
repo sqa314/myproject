@@ -1,0 +1,143 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdbool.h>
+#include<stdlib.h>
+#include<math.h>
+
+void CodeJam(int R, int C)
+{
+	int i, j, k, l;
+	int count = 0;
+	int answer = 0;
+	bool test = false;
+	int a = 0;
+	int max[2] = { 0,0 };
+	char* n = (char*)malloc(sizeof(char)*C);
+	int** distance = (int**)malloc(sizeof(int)*R*C);
+	int** array = (int**)malloc(sizeof(int)*R*C);
+	for (i = 0; i < R; i++)
+	{
+		distance[i] = (int *)malloc(sizeof(int)*C);
+		array[i] = (int *)malloc(sizeof(int)*C);
+	}
+	for (i = 0; i < R; i++)
+	{
+		scanf("%s", n);
+		for (j = 0; j < C; j++)
+		{
+			array[i][j] = n[j] - '0';
+			distance[i][j] = R + C + 1;
+		}
+	}
+	for (i = 0; i < R; i++)
+	{
+		for (j = 0; j < C; j++)
+		{
+			if (array[i][j] == 0)
+			{
+				count++;
+				test = true;
+				for (k = 0; k < R; k++)
+				{
+					for (l = 0; l < C; l++)
+					{
+						if (array[k][l] == 1)
+						{
+							if (distance[i][j] > abs(k - i) + abs(l - j))
+								distance[i][j] = abs(k - i) + abs(l - j);
+						}
+					}
+				}
+			}
+			else
+			{
+				distance[i][j] = 0;
+			}
+		}
+	}
+	if (!test)
+	{
+		printf("0\n");
+		return;
+	}
+	test = false;
+	if (count == R * C)
+	{
+		printf("%d\n", (int)(R / 2) + (int)(C / 2));
+		return;
+	}
+	for (i = 0; i < R; i++)
+	{
+		for (j = 0; j < C; j++)
+		{
+			if (a <= distance[i][j] && distance[i][j] <= R + C)
+			{
+				a = distance[i][j];
+				max[0] = i;
+				max[1] = j;
+			}
+		}
+	}
+	
+	array[max[0]][max[1]] = 1;
+	for (i = 0; i < R; i++)
+	{
+		for (j = 0; j < C; j++)
+		{
+			distance[i][j] = R + C + 1;
+		}
+	}
+	for (i = 0; i < R; i++)
+	{
+		for (j = 0; j < C; j++)
+		{
+			if (array[i][j] == 0)
+			{
+				test = true;
+				for (k = 0; k < R; k++)
+				{
+					for (l = 0; l < C; l++)
+					{
+						if (array[k][l] == 1)
+						{
+							if (distance[i][j] > abs(k - i) + abs(l - j))
+								distance[i][j] = abs(k - i) + abs(l - j);
+						}
+					}
+				}
+			}
+		}
+	}
+	if (!test)
+	{
+		printf("0\n");
+		return;
+	}
+	for (i = 0; i < R; i++)
+	{
+		for (j = 0; j < C; j++)
+		{
+			if (answer <= distance[i][j] && distance[i][j] < R + C)
+			{
+				answer = distance[i][j];
+			}
+		}
+	}
+	printf("%d\n", answer);
+}
+int main()
+{
+	int i;
+	int t;
+	int R, C;
+	scanf("%d", &t);
+	for (i = 1; i <= t; ++i)
+	{
+		scanf("%d", &R);
+		scanf("%d", &C);
+		printf("Case #%d: ", i);
+		CodeJam(R, C);
+	}
+	return 0;
+}
